@@ -1,10 +1,10 @@
 const {
   company: { catchPhrase, catchPhraseDescriptor },
-  random: { paragraph }
+  random: { word }
 } = require('faker')
 
 module.exports = () => ({
   title: catchPhrase(),
   description: catchPhraseDescriptor(),
-  extract: paragraph()
+  extract: word()
 })

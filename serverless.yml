@@ -14,43 +14,43 @@ provider:
       - subnet-95dfa5cd
 
 functions:
-  inquiries-post-resource:
-    handler: src/inquiries/functions/post-resource.handler
+  books-post-resource:
+    handler: src/books/functions/post-resource.handler
     events:
       - http:
-          path: inquiries
+          path: books
           method: post
           cors: true
 
-  inquiries-get-collection:
-    handler: src/inquiries/functions/get-collection.handler
+  books-get-collection:
+    handler: src/books/functions/get-collection.handler
     events:
       - http:
-          path: inquiries
+          path: books
           method: get
           cors: true
 
-  inquiries-get-resource:
-    handler: src/inquiries/functions/get-resource.handler
+  books-get-resource:
+    handler: src/books/functions/get-resource.handler
     events:
       - http:
-          path: inquiries/{id}
+          path: books/{id}
           method: get
           cors: true
 
-  inquiries-put-resource:
-    handler: src/inquiries/functions/put-resource.handler
+  books-put-resource:
+    handler: src/books/functions/put-resource.handler
     events:
       - http:
-          path: inquiries/{id}
+          path: books/{id}
           method: put
           cors: true
 
-  inquiries-delete-resource:
-    handler: src/inquiries/functions/delete-resource.handler
+  books-delete-resource:
+    handler: src/books/functions/delete-resource.handler
     events:
       - http:
-          path: inquiries/{id}
+          path: books/{id}
           method: delete
           cors: true
 plugins:

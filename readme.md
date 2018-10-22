@@ -58,7 +58,7 @@ Create on postgres instance on AWS. Update:
 ```sh
 npm run db:backup:create
 # or
-pg_dump -U postgres slsdb -Fc > backup.dump
+pg_dump -U postgres slspgdb -Fc > backup.dump
 ```
 
 ## Restore db
@@ -66,10 +66,10 @@ pg_dump -U postgres slsdb -Fc > backup.dump
 ```sh
 npm run db:backup:restore
 # or
-dropdb slsdb --if-exists
-createdb slsdb -O postgres
-PGPASSWORD='' pg_restore -Fc --no-acl --no-owner -U postgres -d slsdb backup.dump
+dropdb slspgdb --if-exists
+createdb slspgdb -O postgres
+PGPASSWORD='' pg_restore -Fc --no-acl --no-owner -U postgres -d slspgdb backup.dump
 
 # Test if books table is populated
-psql slsdb postgres -c "select * from books;"
+psql slspgdb postgres -c "select * from books;"
 ```
