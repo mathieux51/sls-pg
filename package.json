@@ -1,0 +1,46 @@
+{
+  "name": "engie-bay-sls",
+  "version": "1.0.0",
+  "description": "REST API boilerplate (serverless, pg, offline)",
+  "main": "index.js",
+  "scripts": {
+    "offline": "NODE_ENV=offline sls offline start",
+    "start": "onchange -i -k '**/*.js' -- npm run offline",
+    "deploy": "sls deploy",
+    "deploy:env:production": "NODE_ENV=production npm run deploy",
+    "deploy:env:development": "NODE_ENV=development npm run deploy",
+    "deploy:inquiries-get-collection": "sls deploy function --function inquiries-get-collection",
+    "invoke:local:inquiries-get-collection": "sls invoke local --function inquiries-get-collection --log",
+    "invoke:aws:inquiries-get-collection": "sls invoke --function inquiries-get-collection --log",
+    "db:backup:create": "pg_dump -U postgres slsdb -Fc > backup.dump",
+    "predb:backup:restore": "dropdb slsdb --if-exists && createdb slsdb -O postgres",
+    "db:backup:restore": "PGPASSWORD='' pg_restore -Fc --no-acl --no-owner -U postgres -d slsdb backup.dump",
+    "db:migrate": "node -r dotenv/config src/scripts/migrate dotenv_config_path=./.env.offline",
+    "db:fixtures": "node -r dotenv/config src/scripts/fixtures dotenv_config_path=./.env.offline"
+  },
+  "keywords": [
+    "serverless",
+    "serverless-offline",
+    "postgres",
+    "faker",
+    "pg",
+    "postgrator",
+    "sql-template-strings"
+  ],
+  "author": "Mathieu Schmidt",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.6.1",
+    "faker": "^4.1.0",
+    "onchange": "^5.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "pg": "^7.5.0",
+    "postgrator": "^3.6.0",
+    "serverless": "^1.32.0",
+    "serverless-dotenv-plugin": "^2.0.1",
+    "serverless-offline": "^3.27.0",
+    "sql-template-strings": "^2.2.2"
+  }
+}

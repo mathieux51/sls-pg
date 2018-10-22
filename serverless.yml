@@ -1,0 +1,62 @@
+service: engie-bay-sls
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: eu-west-1
+  vpc:
+    securityGroupIds:
+      - sg-0e567b68
+    subnetIds:
+      - subnet-0a053c6e
+      - subnet-7a427e0c
+      - subnet-95dfa5cd
+
+functions:
+  inquiries-post-resource:
+    handler: src/inquiries/functions/post-resource.handler
+    events:
+      - http:
+          path: inquiries
+          method: post
+          cors: true
+
+  inquiries-get-collection:
+    handler: src/inquiries/functions/get-collection.handler
+    events:
+      - http:
+          path: inquiries
+          method: get
+          cors: true
+
+  inquiries-get-resource:
+    handler: src/inquiries/functions/get-resource.handler
+    events:
+      - http:
+          path: inquiries/{id}
+          method: get
+          cors: true
+
+  inquiries-put-resource:
+    handler: src/inquiries/functions/put-resource.handler
+    events:
+      - http:
+          path: inquiries/{id}
+          method: put
+          cors: true
+
+  inquiries-delete-resource:
+    handler: src/inquiries/functions/delete-resource.handler
+    events:
+      - http:
+          path: inquiries/{id}
+          method: delete
+          cors: true
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+custom:
+  serverless-offline:
+    port: ${env:OFFLINE_PORT}

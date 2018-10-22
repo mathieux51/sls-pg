@@ -1,0 +1,2 @@
+ALTER TABLE IF EXISTS "books"
+ADD user_id INTEGER
