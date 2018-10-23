@@ -11,7 +11,7 @@ Make sure your lambda user can have access to VPC. You should also have postgres
 
 ```sh
 aws configure
-git clone git@github.tools.digital.engie.com:GBSEngieDigital/engie-bay-sls.git
+git clone https://github.com/mathieux51/sls-pg.git
 npm install
 npm start
 ```
