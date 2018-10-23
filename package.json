@@ -1,5 +1,5 @@
 {
-  "name": "engie-bay-sls",
+  "name": "sls-pg",
   "version": "1.0.0",
   "description": "REST API boilerplate (serverless, pg, offline)",
   "main": "index.js",

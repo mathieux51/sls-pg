@@ -1,4 +1,4 @@
-service: engie-bay-sls
+service: sls-pg
 
 provider:
   name: aws
